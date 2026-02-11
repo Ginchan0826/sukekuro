@@ -15,17 +15,19 @@
             --primary-color: #8B6F47;
             --secondary-color: #D4A574;
             --accent-color: #2C5F2D;
-            --text-dark: #333;
-            --text-light: #666;
-            --bg-cream: #FFF8F0;
+            --text-dark: #2d2d2d;
+            --text-light: #6b6b6b;
+            --bg-cream: #FAF7F2;
             --white: #FFFFFF;
+            --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
 
         body {
             font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
             color: var(--text-dark);
-            line-height: 1.8;
+            line-height: 1.9;
             overflow-x: hidden;
+            background: var(--white);
         }
 
         /* ヘッダー */
@@ -34,11 +36,12 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 30px rgba(0,0,0,0.06);
             z-index: 1000;
             animation: slideDown 0.8s ease-out;
+            border-bottom: 1px solid rgba(139, 111, 71, 0.1);
         }
 
         @keyframes slideDown {
@@ -53,91 +56,79 @@
         }
 
         nav {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1.2rem 3rem;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .logo img {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
         }
 
         .logo:hover img {
-            transform: rotate(360deg);
+            transform: rotate(360deg) scale(1.05);
         }
 
         .logo h1 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             color: var(--primary-color);
-            font-weight: bold;
+            font-weight: 600;
+            letter-spacing: 0.05em;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
             list-style: none;
-            align-items: center;
         }
 
         .nav-links a {
             color: var(--text-dark);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
             position: relative;
+            letter-spacing: 0.03em;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
             background: var(--primary-color);
-            transition: width 0.3s ease;
+            transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        .instagram-icon {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .instagram-icon:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(188, 24, 136, 0.4);
-        }
-
-        .instagram-icon::after {
-            display: none;
-        }
-
         /* ヒーローセクション */
         .hero {
-            margin-top: 80px;
-            height: 70vh;
+            margin-top: 90px;
+            height: 75vh;
             background: url('./hero.png') center/cover no-repeat;
             position: relative;
             display: flex;
@@ -153,7 +144,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.45));
         }
 
         .hero-content {
@@ -161,13 +152,13 @@
             z-index: 1;
             text-align: center;
             color: white;
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 1.2s ease-out;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -176,33 +167,39 @@
         }
 
         .hero-content h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            font-weight: bold;
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 3px 15px rgba(0,0,0,0.4);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            line-height: 1.4;
         }
 
         .hero-content p {
-            font-size: 1.5rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 1.6rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 0.1em;
+            font-weight: 300;
         }
 
         /* セクション共通 */
         section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
+            padding: 7rem 3rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--primary-color);
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            letter-spacing: 0.1em;
         }
 
         .section-title.visible {
@@ -213,10 +210,10 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--secondary-color);
-            margin: 1rem auto 0;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+            margin: 1.5rem auto 0;
         }
 
         /* Aboutセクション */
@@ -227,11 +224,11 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 5rem;
             align-items: center;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .about-content.visible {
@@ -240,42 +237,62 @@
         }
 
         .about-text h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
         }
 
         .about-text p {
-            font-size: 1.1rem;
-            line-height: 2;
+            font-size: 1.05rem;
+            line-height: 2.2;
             color: var(--text-light);
-            margin-bottom: 1rem;
+            margin-bottom: 1.3rem;
+            letter-spacing: 0.03em;
         }
 
         .about-image {
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 111, 71, 0.1), transparent);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .about-image:hover::before {
+            opacity: 1;
         }
 
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .about-image:hover img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         /* メニューセクション */
         .menu-image-wrapper {
             text-align: center;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .menu-image-wrapper.visible {
@@ -286,14 +303,26 @@
         .menu-image-wrapper img {
             max-width: 100%;
             height: auto;
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 25px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
         }
 
         .menu-image-wrapper img:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateY(-15px);
+            box-shadow: 0 35px 90px rgba(0,0,0,0.25);
+        }
+
+        .menu-note {
+            text-align: center;
+            margin-top: 3.5rem;
+        }
+
+        .menu-note p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            line-height: 2;
+            letter-spacing: 0.05em;
         }
 
         /* インスタグラムセクション */
@@ -302,9 +331,11 @@
         }
 
         .instagram-container {
+            max-width: 900px;
+            margin: 0 auto;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .instagram-container.visible {
@@ -314,93 +345,86 @@
 
         .instagram-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .instagram-follow-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            gap: 1rem;
+            background: var(--instagram-gradient);
             color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(188, 24, 136, 0.3);
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(188, 24, 136, 0.25);
+            letter-spacing: 0.05em;
         }
 
         .instagram-follow-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(188, 24, 136, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(188, 24, 136, 0.4);
         }
 
         .instagram-feed {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            display: flex;
+            justify-content: center;
             margin-top: 3rem;
         }
 
         .instagram-post {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 540px;
+            width: 100%;
         }
 
         .instagram-post:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .instagram-embed-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 1rem;
+            transform: translateY(-12px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
 
         .instagram-note {
             text-align: center;
-            margin-top: 2rem;
-            padding: 1.5rem;
+            margin-top: 3rem;
+            padding: 2rem;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
         }
 
         .instagram-note p {
             color: var(--text-light);
-            font-size: 1rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
+            line-height: 2;
+            letter-spacing: 0.03em;
         }
 
         .instagram-note a {
             color: #bc1888;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .instagram-note a:hover {
-            text-decoration: underline;
+            color: #dc2743;
         }
 
         /* アクセスセクション */
         .access-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 5rem;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .access-content.visible {
@@ -410,15 +434,15 @@
 
         .access-info {
             background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
         }
 
         .info-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(139, 111, 71, 0.1);
         }
 
         .info-item:last-child {
@@ -429,29 +453,29 @@
 
         .info-item h3 {
             color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
         }
 
         .info-item p {
             color: var(--text-light);
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
+            line-height: 2;
+            letter-spacing: 0.02em;
         }
 
         .map-container {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .map-wrapper {
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
             flex: 1;
         }
 
@@ -459,33 +483,34 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .map-wrapper:hover img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .google-map-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.8rem;
+            gap: 1rem;
             background: linear-gradient(135deg, #4285F4, #34A853);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
+            padding: 1.2rem 2.5rem;
+            border-radius: 60px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(66, 133, 244, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(66, 133, 244, 0.25);
             text-align: center;
+            letter-spacing: 0.03em;
         }
 
         .google-map-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(66, 133, 244, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(66, 133, 244, 0.4);
         }
 
         /* フッター */
@@ -493,51 +518,73 @@
             background: linear-gradient(135deg, #2c2416, #3d3020);
             color: white;
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 3.5rem 2rem;
         }
 
         footer p {
-            font-size: 1rem;
-            opacity: 0.9;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            letter-spacing: 0.05em;
         }
 
         /* レスポンシブ */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.2rem 2rem;
+            }
+
+            section {
+                padding: 5rem 2rem;
+            }
+
+            .about-content,
+            .access-content {
+                gap: 3rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
             .nav-links {
-                gap: 1rem;
+                gap: 1.5rem;
+                font-size: 0.85rem;
             }
 
-            .nav-links a span {
-                display: none;
-            }
-
-            .instagram-icon {
-                padding: 0.5rem;
+            .hero {
+                height: 60vh;
             }
 
             .hero-content h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
 
             .about-content,
             .access-content {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
 
             section {
-                padding: 3rem 1rem;
+                padding: 4rem 1.5rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
-            .instagram-feed {
-                grid-template-columns: 1fr;
+            .instagram-container {
+                max-width: 100%;
             }
         }
 
@@ -545,7 +592,7 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .fade-in.visible {
@@ -563,16 +610,10 @@
                 <h1>すけくろ</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="#about"><span>お店について</span></a></li>
-                <li><a href="#menu"><span>メニュー</span></a></li>
-                <li><a href="#instagram"><span>Instagram</span></a></li>
-                <li><a href="#access"><span>アクセス</span></a></li>
-                <li><a href="https://www.instagram.com/sukekuro.onigiri" target="_blank" class="instagram-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                    <span>Follow</span>
-                </a></li>
+                <li><a href="#about">お店について</a></li>
+                <li><a href="#menu">メニュー</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+                <li><a href="#access">アクセス</a></li>
             </ul>
         </nav>
     </header>
@@ -608,8 +649,8 @@
         <div class="menu-image-wrapper fade-in">
             <img src="./menu.png" alt="すけくろメニュー">
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem;">
+        <div class="menu-note">
+            <p>
                 おにぎり170円（税込）から<br>
                 豚汁とのセットもございます
             </p>
@@ -629,14 +670,7 @@
                 </a>
             </div>
 
-            <div class="instagram-note">
-                <p>
-                    最新の投稿やお店の様子は<a href="https://www.instagram.com/sukekuro.onigiri" target="_blank">Instagram</a>でチェック!<br>
-                    日替わりメニューや限定商品の情報もいち早くお届けしています。
-                </p>
-            </div>
-
-            <div class="instagram-feed" style="margin-top: 3rem;">
+            <div class="instagram-feed">
                 <!-- Instagramの埋め込み投稿 -->
                 <div class="instagram-post">
                     <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sukekuro.onigiri/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
@@ -666,6 +700,13 @@
                         </div>
                     </blockquote>
                 </div>
+            </div>
+
+            <div class="instagram-note">
+                <p>
+                    最新の投稿やお店の様子は<a href="https://www.instagram.com/sukekuro.onigiri" target="_blank">Instagram</a>でチェック<br>
+                    日替わりメニューや限定商品の情報もいち早くお届けしています
+                </p>
             </div>
         </div>
     </section>
@@ -746,7 +787,7 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 80;
+                    const offsetTop = target.offsetTop - 90;
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
