@@ -153,6 +153,7 @@
             text-align: center;
             color: white;
             animation: fadeInUp 1.2s ease-out;
+            padding: 0 1rem;
         }
 
         @keyframes fadeInUp {
@@ -393,10 +394,13 @@
         .instagram-note {
             text-align: center;
             margin-top: 3rem;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .instagram-note p {
@@ -527,10 +531,14 @@
             letter-spacing: 0.05em;
         }
 
-        /* レスポンシブ */
+        /* レスポンシブ - タブレット */
         @media (max-width: 1024px) {
             nav {
                 padding: 1.2rem 2rem;
+            }
+
+            .nav-links {
+                gap: 2rem;
             }
 
             section {
@@ -541,50 +549,183 @@
             .access-content {
                 gap: 3rem;
             }
+
+            .hero-content h2 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.4rem;
+            }
         }
 
+        /* レスポンシブ - スマホ */
         @media (max-width: 768px) {
+            /* ヘッダー - スマホ対応 */
             nav {
                 padding: 1rem 1.5rem;
             }
 
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+
             .logo h1 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
             .nav-links {
-                gap: 1.5rem;
+                gap: 1.2rem;
+            }
+
+            .nav-links a {
                 font-size: 0.85rem;
             }
 
+            /* ヒーローセクション - スマホ対応 */
             .hero {
                 height: 60vh;
+                margin-top: 70px;
             }
 
             .hero-content h2 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                line-height: 1.5;
             }
 
             .hero-content p {
                 font-size: 1.1rem;
             }
 
-            .about-content,
-            .access-content {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
+            /* セクション - スマホ対応 */
             section {
                 padding: 4rem 1.5rem;
             }
 
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
+                margin-bottom: 3rem;
             }
 
+            /* About - スマホ対応 */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-text p {
+                font-size: 1.05rem;
+                line-height: 2;
+            }
+
+            /* メニュー - スマホ対応 */
+            .menu-note p {
+                font-size: 1.1rem;
+            }
+
+            /* Instagram - スマホ対応 */
             .instagram-container {
                 max-width: 100%;
+            }
+
+            .instagram-follow-btn {
+                font-size: 1rem;
+                padding: 1rem 2rem;
+            }
+
+            .instagram-note {
+                padding: 2rem 1.5rem;
+                max-width: 100%;
+            }
+
+            .instagram-note p {
+                font-size: 1rem;
+                line-height: 1.9;
+            }
+
+            /* アクセス - スマホ対応 */
+            .access-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .access-info {
+                padding: 2rem 1.5rem;
+            }
+
+            .info-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .info-item p {
+                font-size: 1rem;
+                line-height: 1.9;
+            }
+
+            .google-map-btn {
+                font-size: 1rem;
+                padding: 1rem 2rem;
+            }
+
+            /* フッター - スマホ対応 */
+            footer p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* さらに小さいスマホ対応 */
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+
+            .nav-links {
+                gap: 0.8rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.6rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 3rem 1.2rem;
+            }
+
+            .instagram-follow-btn {
+                font-size: 0.95rem;
+                padding: 0.9rem 1.8rem;
+            }
+
+            .google-map-btn {
+                font-size: 0.95rem;
+                padding: 0.9rem 1.8rem;
             }
         }
 
@@ -787,7 +928,7 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 90;
+                    const offsetTop = target.offsetTop - 70;
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
