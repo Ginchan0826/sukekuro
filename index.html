@@ -741,37 +741,39 @@
             transform: translateY(0);
         }
 
-        /* --- 【ここから追加の要望対応CSS】 --- */
+        /* -------------------------------------------------------------------
+           追加の要望対応CSS（元のコードは一切変えずに追加のみ）
+           ------------------------------------------------------------------- */
 
-        /* スマホ時のヘッダー文字非表示と一文への調整 */
+        /* 1. スマホ時のヘッダー文字非表示、ナビゲーションのスワイプ対応、ヒーロー改行 */
         @media (max-width: 768px) {
-            .logo h1 { display: none !important; } /* ヘッダーの「すけくろ」を消す */
-            .nav-links { gap: 0.5rem !important; } /* ナビの間隔を詰める */
-            .nav-links a { font-size: 0.75rem !important; white-space: nowrap; } /* 文字を小さく、1行に固定 */
-            .hero-content h2 { font-size: 1.8rem !important; white-space: nowrap; } /* ヒーローの文字を1行に */
+            .logo h1 { display: none !important; } /* すけくろ文字を消す */
+            .nav-links {
+                overflow-x: auto !important; /* 横スクロールを許可 */
+                white-space: nowrap !important; /* 折り返し禁止 */
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
+                flex: 1;
+                justify-content: flex-end;
+            }
+            .nav-links::-webkit-scrollbar { display: none; } /* バーを隠す */
+            .nav-links li { display: inline-block; flex-shrink: 0; }
+            .hero-content h2 { font-size: 1.8rem !important; white-space: normal !important; } /* ヒーローの改行を許可 */
         }
 
-        /* Newsセクションのスタイル */
+        /* 2. お知らせ・言語スイッチ・拡大用スタイル */
         #news-section { background: var(--white); padding: 4rem 3rem; }
         .news-list { list-style: none; max-width: 800px; margin: 0 auto; }
         .news-item { display: flex; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); gap: 20px; }
         .news-date { font-weight: bold; color: var(--primary-color); min-width: 100px; }
-
-        /* 画像拡大機能（モーダル） */
+        .clickable { cursor: zoom-in; }
         .img-modal {
-            display: none; position: fixed; z-index: 9999; top: 0; left: 0; 
-            width: 100%; height: 100%; background: rgba(0,0,0,0.9); 
-            justify-content: center; align-items: center; cursor: pointer;
+            display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); justify-content: center; align-items: center; cursor: pointer;
         }
         .img-modal img { max-width: 95%; max-height: 95%; object-fit: contain; }
-        .clickable { cursor: zoom-in; }
-
-        /* 言語選択ボタンのスタイル */
         .lang-switcher { display: flex; gap: 5px; margin-left: 10px; }
-        .lang-btn { 
-            background: #eee; border: none; padding: 3px 8px; font-size: 0.7rem; 
-            border-radius: 4px; cursor: pointer; transition: 0.3s;
-        }
+        .lang-btn { background: #eee; border: none; padding: 3px 8px; font-size: 0.7rem; border-radius: 4px; cursor: pointer; transition: 0.3s; }
         .lang-btn.active { background: var(--primary-color); color: white; }
 
     </style>
@@ -799,14 +801,14 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h2 class="lang-node" data-ja="おにぎりと豚汁が待たずにすぐ食べられる!" data-en="Quick Onigiri & Tonjiru!" data-zh="饭团和猪肉汤，即刻享用！">おにぎりと豚汁が<br>待たずにすぐ食べられる!</h2>
+            <h2 class="lang-node" data-ja="おにぎりと豚汁が待たずにすぐ食べられる!" data-en="Fresh Onigiri & Tonjiru,<br>Ready in Seconds!" data-zh="饭团和猪肉汤，<br>无需等待，即刻享用！">おにぎりと豚汁が<br>待たずにすぐ食べられる!</h2>
             <p class="lang-node" data-ja="京都・丸太町のおにぎり専門店" data-en="Onigiri Shop in Marutamachi, Kyoto" data-zh="京都丸太町的饭团专门店">京都・丸太町のおにぎり専門店</p>
         </div>
     </section>
 
     <section id="news-section" class="fade-in">
         <h2 class="section-title lang-node" data-ja="お知らせ" data-en="News" data-zh="通知">お知らせ</h2>
-        <ul class="news-list" id="news-list">
+        <ul class="news-list">
             <li class="news-item">
                 <span class="news-date">2025/02/09</span>
                 <span class="lang-node" data-ja="すけくろOPEN!" data-en="Sukekuro Grand Opening!" data-zh="Sukekuro 正式开业！">すけくろOPEN!</span>
@@ -887,7 +889,7 @@
             </div>
 
             <div class="instagram-note">
-                <p>
+                <p class="lang-node" data-ja="最新の投稿やお店の様子はInstagramでチェック 日替わりメニューや限定商品の情報もいち早くお届けしています" data-en="Check Instagram for our latest posts. We also share info on daily menus and limited items!" data-zh="查看 Instagram 了解我们的最新动态。我们还会分享每日菜单和限量商品的信息！">
                     最新の投稿やお店の様子は<a href="https://www.instagram.com/sukekuro.onigiri" target="_blank">Instagram</a>でチェック<br>
                     日替わりメニューや限定商品の情報もいち早くお届けしています
                 </p>
@@ -901,7 +903,7 @@
             <div class="access-info">
                 <div class="info-item">
                     <h3 class="lang-node" data-ja="住所" data-en="Address" data-zh="地址">住所</h3>
-                    <p>〒602-8029<br>
+                    <p class="lang-node" data-ja="〒602-8029 京都市上京区武衛陣町237-1階 地下鉄丸太町駅 2番出口より徒歩約3分" data-en="〒602-8029 237-1 Bueijincho, Kamigyo-ku, Kyoto. 3 min walk from Marutamachi Sta. Exit 2." data-zh="〒602-8029 京都市上京区武衛阵町237-1F。地铁丸太町站 2号出口步行约3分钟。">〒602-8029<br>
                     京都市上京区武衛陣町237-1階<br>
                     地下鉄丸太町駅 2番出口より徒歩約3分</p>
                 </div>
@@ -946,7 +948,6 @@
     <script async src="//www.instagram.com/embed.js"></script>
 
     <script>
-        // スクロールアニメーション
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -960,12 +961,10 @@
             });
         }, observerOptions);
 
-        // 全ての.fade-in要素を監視
         document.querySelectorAll('.fade-in, .section-title, .about-content, .menu-image-wrapper, .instagram-container, .access-content').forEach(el => {
             observer.observe(el);
         });
 
-        // スムーズスクロール
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -982,7 +981,6 @@
 
         /* --- 【ここから追加要望のJS機能】 --- */
 
-        // 1. 画像拡大機能
         const modal = document.getElementById('image-modal');
         const modalImg = document.getElementById('modal-img');
         
@@ -997,9 +995,7 @@
             modal.style.display = 'none';
         }
 
-        // 2. 多言語切り替え機能
         function switchLang(lang) {
-            // ボタンのアクティブ状態更新
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if(btn.innerText.toLowerCase() === lang || (lang === 'ja' && btn.innerText === 'JP')) {
@@ -1007,11 +1003,9 @@
                 }
             });
 
-            // テキストの置換
             document.querySelectorAll('.lang-node').forEach(node => {
                 const text = node.getAttribute(`data-${lang}`);
                 if(text) {
-                    // <br>が含まれる場合はinnerHTMLで置換
                     if (text.includes('<br>')) {
                         node.innerHTML = text;
                     } else {
