@@ -740,10 +740,43 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* --- 【ここから追加の要望対応CSS】 --- */
+
+        /* スマホ時のヘッダー文字非表示と一文への調整 */
+        @media (max-width: 768px) {
+            .logo h1 { display: none !important; } /* ヘッダーの「すけくろ」を消す */
+            .nav-links { gap: 0.5rem !important; } /* ナビの間隔を詰める */
+            .nav-links a { font-size: 0.75rem !important; white-space: nowrap; } /* 文字を小さく、1行に固定 */
+            .hero-content h2 { font-size: 1.8rem !important; white-space: nowrap; } /* ヒーローの文字を1行に */
+        }
+
+        /* Newsセクションのスタイル */
+        #news-section { background: var(--white); padding: 4rem 3rem; }
+        .news-list { list-style: none; max-width: 800px; margin: 0 auto; }
+        .news-item { display: flex; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); gap: 20px; }
+        .news-date { font-weight: bold; color: var(--primary-color); min-width: 100px; }
+
+        /* 画像拡大機能（モーダル） */
+        .img-modal {
+            display: none; position: fixed; z-index: 9999; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.9); 
+            justify-content: center; align-items: center; cursor: pointer;
+        }
+        .img-modal img { max-width: 95%; max-height: 95%; object-fit: contain; }
+        .clickable { cursor: zoom-in; }
+
+        /* 言語選択ボタンのスタイル */
+        .lang-switcher { display: flex; gap: 5px; margin-left: 10px; }
+        .lang-btn { 
+            background: #eee; border: none; padding: 3px 8px; font-size: 0.7rem; 
+            border-radius: 4px; cursor: pointer; transition: 0.3s;
+        }
+        .lang-btn.active { background: var(--primary-color); color: white; }
+
     </style>
 </head>
 <body>
-    <!-- ヘッダー -->
     <header>
         <nav>
             <div class="logo">
@@ -751,54 +784,65 @@
                 <h1>すけくろ</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="#about">お店について</a></li>
-                <li><a href="#menu">メニュー</a></li>
-                <li><a href="#instagram">Instagram</a></li>
-                <li><a href="#access">アクセス</a></li>
+                <li><a href="#about" class="lang-node" data-ja="お店について" data-en="About" data-zh="关于">お店について</a></li>
+                <li><a href="#menu" class="lang-node" data-ja="メニュー" data-en="Menu" data-zh="菜单">メニュー</a></li>
+                <li><a href="#instagram" class="lang-node" data-ja="Instagram" data-en="Instagram" data-zh="Instagram">Instagram</a></li>
+                <li><a href="#access" class="lang-node" data-ja="アクセス" data-en="Access" data-zh="交通">アクセス</a></li>
+                <li class="lang-switcher">
+                    <button class="lang-btn active" onclick="switchLang('ja')">JP</button>
+                    <button class="lang-btn" onclick="switchLang('en')">EN</button>
+                    <button class="lang-btn" onclick="switchLang('zh')">ZH</button>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <!-- ヒーローセクション -->
     <section class="hero">
         <div class="hero-content">
-            <h2>おにぎりと豚汁が<br>待たずにすぐ食べられる!</h2>
-            <p>京都・丸太町のおにぎり専門店</p>
+            <h2 class="lang-node" data-ja="おにぎりと豚汁が待たずにすぐ食べられる!" data-en="Quick Onigiri & Tonjiru!" data-zh="饭团和猪肉汤，即刻享用！">おにぎりと豚汁が<br>待たずにすぐ食べられる!</h2>
+            <p class="lang-node" data-ja="京都・丸太町のおにぎり専門店" data-en="Onigiri Shop in Marutamachi, Kyoto" data-zh="京都丸太町的饭团专门店">京都・丸太町のおにぎり専門店</p>
         </div>
     </section>
 
-    <!-- Aboutセクション -->
+    <section id="news-section" class="fade-in">
+        <h2 class="section-title lang-node" data-ja="お知らせ" data-en="News" data-zh="通知">お知らせ</h2>
+        <ul class="news-list" id="news-list">
+            <li class="news-item">
+                <span class="news-date">2025/02/09</span>
+                <span class="lang-node" data-ja="すけくろOPEN!" data-en="Sukekuro Grand Opening!" data-zh="Sukekuro 正式开业！">すけくろOPEN!</span>
+            </li>
+        </ul>
+    </section>
+
     <section id="about">
-        <h2 class="section-title fade-in">お店について</h2>
+        <h2 class="section-title fade-in lang-node" data-ja="お店について" data-en="About" data-zh="关于我们">お店について</h2>
         <div class="about-content fade-in">
             <div class="about-text">
-                <h3>心を込めて握る、京都のおにぎり</h3>
-                <p>「すけくろ」は、京都・丸太町にあるおにぎり専門店です。</p>
-                <p>厳選したお米と具材を使い、一つひとつ丁寧に握ったおにぎりを、できたての温かさでお届けします。</p>
-                <p>お忙しい方でも、待たずにすぐにお召し上がりいただけるよう、テイクアウトやイートインに対応しております。</p>
-                <p>豚汁とご一緒に、ほっと一息つける時間をお過ごしください。</p>
+                <h3 class="lang-node" data-ja="心を込めて握る、京都のおにぎり" data-en="Heartfelt Kyoto Onigiri" data-zh="用心捏制的京都饭团">心を込めて握る、京都のおにぎり</h3>
+                <p class="lang-node" data-ja="「すけくろ」は、京都・丸太町にあるおにぎり専門店です。" data-en="Sukekuro is an onigiri specialty shop in Marutamachi, Kyoto." data-zh="“Sukekuro”是位于京都丸太町的饭团专门店。">「すけくろ」は、京都・丸太町にあるおにぎり専門店です。</p>
+                <p class="lang-node" data-ja="厳選したお米と具材を使い、一つひとつ丁寧に握ったおにぎりを、できたての温かさでお届けします。" data-en="We use carefully selected rice and ingredients to deliver handmade warmth." data-zh="我们使用精选的大米和食材，为您提供每一个精心制作的饭团。">厳選したお米と具材を使い、一つひとつ丁寧に握ったおにぎりを、できたての温かさでお届けします。</p>
+                <p class="lang-node" data-ja="お忙しい方でも、待たずにすぐにお召し上がりいただけるよう、テイクアウトやイートインに対応しております。" data-en="Takeout and eat-in options are available for a quick meal." data-zh="支持外带和堂食，让忙碌的您也能快速享用。">お忙しい方でも、待たずにすぐにお召し上がりいただけるよう、テイクアウトやイートインに対応しております。</p>
+                <p class="lang-node" data-ja="豚汁とご一緒に、ほっと一息つける時間をお過ごしください。" data-en="Enjoy a relaxing moment with our special pork soup." data-zh="请配合猪肉汤，度过一段放松的时光。">豚汁とご一緒に、ほっと一息つける時間をお過ごしください。</p>
             </div>
             <div class="about-image">
-                <img src="./hero.png" alt="すけくろのおにぎり">
+                <img src="./hero.png" alt="すけくろのおにぎり" class="clickable">
             </div>
         </div>
     </section>
 
-    <!-- メニューセクション -->
     <section id="menu">
-        <h2 class="section-title fade-in">メニュー</h2>
+        <h2 class="section-title fade-in lang-node" data-ja="メニュー" data-en="Menu" data-zh="菜单">メニュー</h2>
         <div class="menu-image-wrapper fade-in">
-            <img src="./menu.png" alt="すけくろメニュー">
+            <img src="./menu.png" alt="すけくろメニュー" class="clickable">
         </div>
         <div class="menu-note">
-            <p>
+            <p class="lang-node" data-ja="おにぎり170円（税込）から 豚汁とのセットもございます" data-en="Onigiri from 170 JPY. Sets available." data-zh="饭团170日元起。提供套装。">
                 おにぎり170円（税込）から<br>
                 豚汁とのセットもございます
             </p>
         </div>
     </section>
 
-    <!-- インスタグラムセクション -->
     <section id="instagram">
         <h2 class="section-title fade-in">Instagram</h2>
         <div class="instagram-container fade-in">
@@ -812,7 +856,6 @@
             </div>
 
             <div class="instagram-feed">
-                <!-- Instagramの埋め込み投稿 -->
                 <div class="instagram-post">
                     <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sukekuro.onigiri/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                         <div style="padding:16px;">
@@ -852,38 +895,37 @@
         </div>
     </section>
 
-    <!-- アクセスセクション -->
     <section id="access">
-        <h2 class="section-title fade-in">アクセス</h2>
+        <h2 class="section-title fade-in lang-node" data-ja="アクセス" data-en="Access" data-zh="交通信息">アクセス</h2>
         <div class="access-content fade-in">
             <div class="access-info">
                 <div class="info-item">
-                    <h3>住所</h3>
+                    <h3 class="lang-node" data-ja="住所" data-en="Address" data-zh="地址">住所</h3>
                     <p>〒602-8029<br>
                     京都市上京区武衛陣町237-1階<br>
                     地下鉄丸太町駅 2番出口より徒歩約3分</p>
                 </div>
                 <div class="info-item">
-                    <h3>営業時間</h3>
-                    <p>8時から16時<br>
+                    <h3 class="lang-node" data-ja="営業時間" data-en="Business Hours" data-zh="营业时间">営業時間</h3>
+                    <p class="lang-node" data-ja="8時から16時 又は売り切れ次第終了 平日営業・土日休" data-en="8:00 - 16:00 (or until sold out) Open weekdays, closed Sat/Sun" data-zh="8点至16点（售完即止） 工作日营业，周六周日休息">8時から16時<br>
                     又は売り切れ次第終了<br>
                     平日営業・土日休</p>
                 </div>
                 <div class="info-item">
-                    <h3>電話番号</h3>
+                    <h3 class="lang-node" data-ja="電話番号" data-en="Phone" data-zh="电话号码">電話番号</h3>
                     <p>TEL: 070-9345-4674</p>
                 </div>
                 <div class="info-item">
-                    <h3>お支払い方法</h3>
-                    <p>テイクアウト・イートイン<br>
+                    <h3 class="lang-node" data-ja="お支払い方法" data-en="Payment" data-zh="支付方式">お支払い方法</h3>
+                    <p class="lang-node" data-ja="テイクアウト・イートイン (先払い制)" data-en="Takeout & Eat-in (Prepayment)" data-zh="外带/堂食（先付款制）">テイクアウト・イートイン<br>
                     (先払い制)</p>
                 </div>
             </div>
             <div class="map-container">
                 <div class="map-wrapper">
-                    <img src="./map.png" alt="すけくろ周辺地図">
+                    <img src="./map.png" alt="すけくろ周辺地図" class="clickable">
                 </div>
-                <a href="https://www.google.com/maps/search/?api=1&query=京都市上京区武衛陣町237-1階" target="_blank" class="google-map-btn">
+                <a href="https://www.google.com/maps/search/?api=1&query=京都市上京区武衛陣町237-1階" target="_blank" class="google-map-btn lang-node" data-ja="Google Mapで開く" data-en="Open Google Maps" data-zh="打开 Google 地图">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
@@ -893,15 +935,16 @@
         </div>
     </section>
 
-    <!-- フッター -->
     <footer>
-        <p>&copy; 2026 おにぎり食堂 すけくろ. All Rights Reserved.</p>
+        <p>© 2026 おにぎり食堂 すけくろ. All Rights Reserved.</p>
     </footer>
 
-    <!-- Instagram埋め込みスクリプト -->
+    <div id="image-modal" class="img-modal" onclick="closeModal()">
+        <img id="modal-img" src="" alt="">
+    </div>
+
     <script async src="//www.instagram.com/embed.js"></script>
 
-    <!-- スクロールアニメーション -->
     <script>
         // スクロールアニメーション
         const observerOptions = {
@@ -936,6 +979,47 @@
                 }
             });
         });
+
+        /* --- 【ここから追加要望のJS機能】 --- */
+
+        // 1. 画像拡大機能
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        
+        document.querySelectorAll('.clickable').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // 2. 多言語切り替え機能
+        function switchLang(lang) {
+            // ボタンのアクティブ状態更新
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === lang || (lang === 'ja' && btn.innerText === 'JP')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // テキストの置換
+            document.querySelectorAll('.lang-node').forEach(node => {
+                const text = node.getAttribute(`data-${lang}`);
+                if(text) {
+                    // <br>が含まれる場合はinnerHTMLで置換
+                    if (text.includes('<br>')) {
+                        node.innerHTML = text;
+                    } else {
+                        node.innerText = text;
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>
