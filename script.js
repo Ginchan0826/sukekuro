@@ -97,9 +97,12 @@ window.addEventListener('scroll', () => {
 // microCMS NEWS
 // ================================
 
-const MICROCMS_SERVICE_ID = "sukekuro-newslist";
-const MICROCMS_API_KEY = "fUCeOvLVNLhJTt8YuJcYJmlYG8lOyYii1VvE";
-const MICROCMS_ENDPOINT = "news";
+fetch("/api/news")
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+  });
+
 
 async function loadNews() {
 
