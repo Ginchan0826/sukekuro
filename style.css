@@ -733,38 +733,3 @@ footer p {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* -------------------------------------------------------------------
-   追加要望対応CSS
-   ------------------------------------------------------------------- */
-
-/* 1. スマホ時のヘッダー横スワイプ、文字非表示、ヒーロー改行 */
-@media (max-width: 768px) {
-    .logo h1 { display: none !important; }
-    .nav-links {
-        overflow-x: auto !important;
-        white-space: nowrap !important;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 5px;
-        flex: 1;
-        justify-content: flex-end;
-    }
-    .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links li { display: inline-block; flex-shrink: 0; }
-    .hero-content h2 { font-size: 1.8rem !important; white-space: normal !important; }
-}
-
-/* 2. お知らせ・言語スイッチ・拡大用スタイル */
-#news-section { background: var(--white); padding: 4rem 3rem; }
-.news-list { list-style: none; max-width: 800px; margin: 0 auto; }
-.news-item { display: flex; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); gap: 20px; }
-.news-date { font-weight: bold; color: var(--primary-color); min-width: 100px; }
-.clickable { cursor: zoom-in; }
-.img-modal {
-    display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9); justify-content: center; align-items: center; cursor: pointer;
-}
-.img-modal img { max-width: 95%; max-height: 95%; object-fit: contain; }
-.lang-switcher { display: flex; gap: 5px; margin-left: 10px; }
-.lang-btn { background: #eee; border: none; padding: 3px 8px; font-size: 0.7rem; border-radius: 4px; cursor: pointer; transition: 0.3s; }
-.lang-btn.active { background: var(--primary-color); color: white; }
