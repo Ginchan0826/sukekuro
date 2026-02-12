@@ -966,3 +966,14 @@ body {
     padding-top: 3rem; /* 上の余白 */
     padding-bottom: 3rem; /* 下の余白 */
 }
+/* スマホ用ヘッダー調整 */
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 1.2rem; /* 元は1.6rem */
+        white-space: nowrap; /* 改行禁止 */
+    }
+
+    .nav-links a {
+        font-size: 0.8rem; /* 少し小さめにして収める */
+    }
+}
