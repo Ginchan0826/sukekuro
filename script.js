@@ -1,4 +1,8 @@
-// スクロールアニメーション (Intersection Observer)
+
+// ================================
+// Intersection Observer
+// ================================
+
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -12,29 +16,32 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// 対象要素の監視開始
-document.querySelectorAll('.fade-in, .section-title, .about-content, .menu-image-wrapper, .instagram-container, .access-content').forEach(el => {
-    observer.observe(el);
-});
+document.querySelectorAll('.fade-in, .section-title, .about-content, .menu-image-wrapper, .instagram-container, .access-content')
+.forEach(el => observer.observe(el));
 
+
+// ================================
 // スムーズスクロール
+// ================================
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const offsetTop = target.offsetTop - 70;
             window.scrollTo({
-                top: offsetTop,
+                top: target.offsetTop - 70,
                 behavior: 'smooth'
             });
         }
     });
 });
 
-/* --- 追加機能の制御 --- */
 
-// 1. 画像拡大機能 (モーダル制御)
+// ================================
+// 画像拡大モーダル
+// ================================
+
 const modal = document.getElementById('image-modal');
 const modalImg = document.getElementById('modal-img');
 
@@ -49,84 +56,85 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
-// 2. 多言語切り替え機能
+
+// ================================
+// 多言語切り替え
+// ================================
+
 function switchLang(lang) {
-    // ボタンのスタイル更新
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
-        if(btn.innerText.toLowerCase() === lang || (lang === 'ja' && btn.innerText === 'JP')) {
+        if(btn.innerText.toLowerCase() === lang || (lang === 'ja' && btn.innerText === 'JP')){
             btn.classList.add('active');
         }
     });
 
-    // テキスト置換
     document.querySelectorAll('.lang-node').forEach(node => {
         const text = node.getAttribute(`data-${lang}`);
-        if(text) {
-            if (text.includes('<br>')) {
-                node.innerHTML = text;
-            } else {
-                node.innerText = text;
-            }
+        if(text){
+            node.innerHTML = text.includes('<br>') ? text : text;
         }
     });
 }
-/* =====================================================
-⭐ microCMS お知らせ機能（ここから追加コード）
-===================================================== */
 
 
-// ======= ★ここを書き換えてください =======
-const MICROCMS_SERVICE_ID = "sukekuro-newslist"; // 例: abcd1234
-const MICROCMS_API_KEY = "fUCeOvLVNLhJTt8YuJcYJmlYG8lOyYii1VvE"; // 読み取り専用キー
-const MICROCMS_ENDPOINT = "news"; // エンドポイント名
-// ======================================
+// ================================
+// 【⑤】ヘッダー透明化
+// ================================
 
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+
+    if (window.scrollY > 60) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+
+// ================================
+// microCMS NEWS
+// ================================
+
+const MICROCMS_SERVICE_ID = "sukekuro-newslist";
+const MICROCMS_API_KEY = "fUCeOvLVNLhJTt8YuJcYJmlYG8lOyYii1VvE";
+const MICROCMS_ENDPOINT = "news";
 
 async function loadNews() {
-const container = document.getElementById('news-list');
-if (!container) return;
 
+    const container = document.getElementById('news-list');
+    if (!container) return;
 
-const url = `https://${MICROCMS_SERVICE_ID}.microcms.io/api/v1/${MICROCMS_ENDPOINT}?limit=5&orders=-publishedAt`;
+    const url = `https://${MICROCMS_SERVICE_ID}.microcms.io/api/v1/${MICROCMS_ENDPOINT}?limit=5&orders=-publishedAt`;
 
+    try {
+        const res = await fetch(url, {
+            headers: { 'X-API-KEY': MICROCMS_API_KEY }
+        });
 
-try {
-const res = await fetch(url, {
-headers: {
-'X-API-KEY': MICROCMS_API_KEY
+        const data = await res.json();
+
+        container.innerHTML = '';
+
+        data.contents.forEach(item => {
+
+            const li = document.createElement('li');
+            li.className = 'news-item fade-in';
+
+            li.innerHTML = `
+                <span class="news-date">${item.title}</span>
+                <span class="news-title">${item.content}</span>
+            `;
+
+            container.appendChild(li);
+            observer.observe(li);
+        });
+
+    } catch (err) {
+        container.innerHTML = '<li>現在お知らせを取得できません</li>';
+    }
 }
-});
-
-
-const data = await res.json();
-
-
-container.innerHTML = '';
-
-
-data.contents.forEach(item => {
-    const li = document.createElement('li');
-    li.className = 'news-item fade-in';
-
-    li.innerHTML = `
-        <span class="news-date">${item.title}</span>
-        <span class="news-title">${item.content}</span>
-    `;
-
-    container.appendChild(li);
-
-    observer.observe(li);
-});
-
-
-
-} catch (err) {
-console.error('microCMS取得失敗:', err);
-container.innerHTML = '<li>現在お知らせを取得できません</li>';
-}
-}
-
 
 window.addEventListener('DOMContentLoaded', loadNews);
 
