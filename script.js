@@ -97,22 +97,19 @@ window.addEventListener('scroll', () => {
 // microCMS NEWS
 // ================================
 
-fetch("/api/news")
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-  });
-
-
 async function loadNews() {
     const container = document.getElementById('news-list');
     if (!container) return;
 
-    const url = "https://sukekuro.vercel.app/api/news";
+    // 自分の GitHub の URL ではなく、Vercel の URL を指定する
+    const url = "https://sukekuro.vercel.app/api/news"; 
 
     try {
-
         const res = await fetch(url);
+        
+        // ここでエラーチェックを入れると原因がわかりやすくなります
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
         const data = await res.json();
 
 
