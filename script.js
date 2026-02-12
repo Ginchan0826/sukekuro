@@ -1,5 +1,5 @@
-const serviceId = "YOUR_SERVICE_ID";      // microCMS サービスID
-const apiKey = "YOUR_API_KEY";            // 読み取り専用 API キー
+const serviceId = "sukekuro-newslist";      // microCMS サービスID
+const apiKey = "6XoNchmbKM1yojG4bAyTRG9GXBGCPkzSkhCH";            // 読み取り専用 API キー
 const endpoint = "news";                  // お知らせ API のエンドポイント
 
 const url = `https://${serviceId}.microcms.io/api/v1/${endpoint}`;
