@@ -9,43 +9,19 @@ const ENDPOINT = "news";
 const NEWS_URL = `https://${SERVICE_ID}.microcms.io/api/v1/${ENDPOINT}?limit=3`;
 
 
-/* ========================================
-   お知らせ取得
-======================================== */
+data.contents.forEach(item => {
+    const li = document.createElement('li');
+    li.className = 'news-item fade-in';
 
-async function loadNews() {
-  const container = document.getElementById("newsList");
+    li.innerHTML = `
+        <span class="news-date">${item.title}</span>
+        <span class="news-title">${item.content}</span>
+    `;
 
-  try {
-    const res = await fetch(NEWS_URL, {
-      headers: { "X-MICROCMS-API-KEY": API_KEY }
-    });
+    container.appendChild(li);
 
-    const data = await res.json();
-
-    container.innerHTML = "";
-
-    data.contents.forEach(item => {
-
-      // ★ ここがあなた仕様（title＝日付 / content＝本文）
-      const li = document.createElement("li");
-      li.className = "news-card fade-in";
-
-      li.innerHTML = `
-        <div class="news-date">${item.title}</div>
-        <div class="news-content">${item.content}</div>
-      `;
-
-      container.appendChild(li);
-    });
-
-  } catch (err) {
-    container.innerHTML = "<p>読み込み失敗しました</p>";
-    console.error(err);
-  }
-}
-
-loadNews();
+    observer.observe(li);
+});
 
 
 
