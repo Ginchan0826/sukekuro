@@ -130,32 +130,3 @@ container.innerHTML = '<li>現在お知らせを取得できません</li>';
 
 window.addEventListener('DOMContentLoaded', loadNews);
 
-/* ========================================
-   Instagram アプリ強制起動（全リンク対応）
-======================================== */
-
-const instaUsername = "sukekuro.onigiri";
-
-// 共通処理
-function openInstagramApp(e) {
-    e.preventDefault();
-
-    // アプリ起動
-    window.location.href = `instagram://user?username=${instaUsername}`;
-
-    // 失敗したらWebへ
-    setTimeout(() => {
-        window.location.href = `https://www.instagram.com/${instaUsername}/`;
-    }, 800);
-}
-
-// グリッド3枚
-document.querySelectorAll('[data-instagram]').forEach(el => {
-    el.addEventListener('click', openInstagramApp);
-});
-
-// 下のメインボタン
-const mainBtn = document.getElementById('instaLink');
-if (mainBtn) {
-    mainBtn.addEventListener('click', openInstagramApp);
-}
