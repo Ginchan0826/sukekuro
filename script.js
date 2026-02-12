@@ -105,36 +105,43 @@ fetch("/api/news")
 
 
 async function loadNews() {
-
     const container = document.getElementById('news-list');
     if (!container) return;
 
-    const url = `https://${MICROCMS_SERVICE_ID}.microcms.io/api/v1/${MICROCMS_ENDPOINT}?limit=5&orders=-publishedAt`;
-
     try {
-        const res = await fetch(url, {
-            headers: { 'X-API-KEY': MICROCMS_API_KEY }
-        });
-
+        // 直接microCMSではなく、作成したAPIルート(/api/news)を叩く
+        const res = await fetch("/api/news");
         const data = await res.json();
 
         container.innerHTML = '';
 
-        data.contents.forEach(item => {
+        if (!data.contents || data.contents.length === 0) {
+            container.innerHTML = '<li>現在お知らせはありません</li>';
+            return;
+        }
 
+        data.contents.forEach(item => {
             const li = document.createElement('li');
             li.className = 'news-item fade-in';
 
+            // 日付のフォーマット（例: 2026.02.13）
+            const date = new Date(item.publishedAt || item.createdAt).toLocaleDateString('ja-JP').replace(/\//g, '.');
+
+            // item.content は microCMSで設定したフィールド名に合わせてください
             li.innerHTML = `
-                <span class="news-date">${item.title}</span>
-                <span class="news-title">${item.content}</span>
+                <span class="news-date">${date}</span>
+                <span class="news-title">${item.content || item.title}</span>
             `;
 
             container.appendChild(li);
-            observer.observe(li);
+            // Intersection Observerを適用
+            if (window.observer) {
+                window.observer.observe(li);
+            }
         });
 
     } catch (err) {
+        console.error("News Load Error:", err);
         container.innerHTML = '<li>現在お知らせを取得できません</li>';
     }
 }
