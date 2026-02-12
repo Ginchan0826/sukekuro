@@ -3,7 +3,7 @@
 ======================================== */
 
 const SERVICE_ID = "sukekuro-newslist";
-const API_KEY = "EG8Cb3HRmE8LQHjrAGNIP23OL9ixZffOtKoV";
+const API_KEY = "6XoNchmbKM1yojG4bAyTRG9GXBGCPkzSkhCH";
 const ENDPOINT = "news";
 
 const NEWS_URL = `https://${SERVICE_ID}.microcms.io/api/v1/${ENDPOINT}?limit=3`;
