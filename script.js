@@ -108,10 +108,13 @@ async function loadNews() {
     const container = document.getElementById('news-list');
     if (!container) return;
 
+    const url = "https://sukekuro.vercel.app/api/news";
+
     try {
-        // 直接microCMSではなく、作成したAPIルート(/api/news)を叩く
-        const res = await fetch("/api/news");
+
+        const res = await fetch(url);
         const data = await res.json();
+
 
         container.innerHTML = '';
 
