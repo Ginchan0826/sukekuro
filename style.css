@@ -734,6 +734,10 @@ footer p {
     transform: translateY(0);
 }
 
+/* -------------------------------------------------------------------
+   追加要望対応CSS
+   ------------------------------------------------------------------- */
+
 /* 1. スマホ時のヘッダー横スワイプ、文字非表示、ヒーロー改行 */
 @media (max-width: 768px) {
     .logo h1 { display: none !important; }
@@ -764,39 +768,3 @@ footer p {
 .lang-switcher { display: flex; gap: 5px; margin-left: 10px; }
 .lang-btn { background: #eee; border: none; padding: 3px 8px; font-size: 0.7rem; border-radius: 4px; cursor: pointer; transition: 0.3s; }
 .lang-btn.active { background: var(--primary-color); color: white; }
-/* インスタグラムセクションの修正 */
-.instagram-feed {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    width: 100%; /* 横幅いっぱいに広がるのを防ぐ */
-}
-
-/* リンクボタン内の画像を画面幅に収める */
-.instagram-follow-btn img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 15px;
-}
-
-/* スマホ表示時の特別調整 */
-@media (max-width: 768px) {
-    .instagram-container {
-        padding: 0 10px; /* 左右に少し余白を作る */
-        overflow: hidden; /* はみ出しをカット */
-    }
-
-    /* インスタグラムのカード（リンク）の幅を調整 */
-    .instagram-feed a.instagram-follow-btn {
-        width: 100%;
-        max-width: 100%;
-        padding: 1rem; /* 内側の余白を少し小さく */
-        flex-direction: column; /* アイコンと文字を縦に並べるなら */
-    }
-
-    .instagram-feed img {
-        width: 100% !important; /* 強制的に画面幅に合わせる */
-        height: auto;
-    }
-}

@@ -1,150 +1,91 @@
+/* ========================================
+   microCMS 設定
+======================================== */
 
-// ================================
-// Intersection Observer
-// ================================
+const SERVICE_ID = "sukekuro-newslist";
+const API_KEY = "EG8Cb3HRmE8LQHjrAGNIP23OL9ixZffOtKoV";
+const ENDPOINT = "news";
 
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.fade-in, .section-title, .about-content, .menu-image-wrapper, .instagram-container, .access-content')
-.forEach(el => observer.observe(el));
+const NEWS_URL = `https://${SERVICE_ID}.microcms.io/api/v1/${ENDPOINT}?limit=3`;
 
 
-// ================================
-// スムーズスクロール
-// ================================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 70,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-
-// ================================
-// 画像拡大モーダル
-// ================================
-
-const modal = document.getElementById('image-modal');
-const modalImg = document.getElementById('modal-img');
-
-document.querySelectorAll('.clickable').forEach(img => {
-    img.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        modalImg.src = img.src;
-    });
-});
-
-function closeModal() {
-    modal.style.display = 'none';
-}
-
-
-// ================================
-// 多言語切り替え
-// ================================
-
-function switchLang(lang) {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if(btn.innerText.toLowerCase() === lang || (lang === 'ja' && btn.innerText === 'JP')){
-            btn.classList.add('active');
-        }
-    });
-
-    document.querySelectorAll('.lang-node').forEach(node => {
-        const text = node.getAttribute(`data-${lang}`);
-        if(text){
-            node.innerHTML = text.includes('<br>') ? text : text;
-        }
-    });
-}
-
-
-// ================================
-// 【⑤】ヘッダー透明化
-// ================================
-
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-
-    if (window.scrollY > 60) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-
-// ================================
-// microCMS NEWS
-// ================================
+/* ========================================
+   お知らせ取得
+======================================== */
 
 async function loadNews() {
-    const container = document.getElementById('news-list');
-    if (!container) return;
+  const container = document.getElementById("newsList");
 
-    // 自分の GitHub の URL ではなく、Vercel の URL を指定する
-    const url = "https://sukekuro.vercel.app/api/news"; 
+  try {
+    const res = await fetch(NEWS_URL, {
+      headers: { "X-MICROCMS-API-KEY": API_KEY }
+    });
 
-    try {
-        const res = await fetch(url);
-        
-        // ここでエラーチェックを入れると原因がわかりやすくなります
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    const data = await res.json();
 
-        const data = await res.json();
+    container.innerHTML = "";
 
+    data.contents.forEach(item => {
 
-        container.innerHTML = '';
+      // ★ ここがあなた仕様（title＝日付 / content＝本文）
+      const li = document.createElement("li");
+      li.className = "news-card fade-in";
 
-        if (!data.contents || data.contents.length === 0) {
-            container.innerHTML = '<li>現在お知らせはありません</li>';
-            return;
-        }
+      li.innerHTML = `
+        <div class="news-date">${item.title}</div>
+        <div class="news-content">${item.content}</div>
+      `;
 
-        data.contents.forEach(item => {
-            const li = document.createElement('li');
-            li.className = 'news-item fade-in';
+      container.appendChild(li);
+    });
 
-            // 日付のフォーマット（例: 2026.02.13）
-            const date = new Date(item.publishedAt || item.createdAt).toLocaleDateString('ja-JP').replace(/\//g, '.');
-
-            // item.content は microCMSで設定したフィールド名に合わせてください
-            li.innerHTML = `
-                <span class="news-date">${date}</span>
-                <span class="news-title">${item.content || item.title}</span>
-            `;
-
-            container.appendChild(li);
-            // Intersection Observerを適用
-            if (window.observer) {
-                window.observer.observe(li);
-            }
-        });
-
-    } catch (err) {
-        console.error("News Load Error:", err);
-        container.innerHTML = '<li>現在お知らせを取得できません</li>';
-    }
+  } catch (err) {
+    container.innerHTML = "<p>読み込み失敗しました</p>";
+    console.error(err);
+  }
 }
 
-window.addEventListener('DOMContentLoaded', loadNews);
+loadNews();
 
+
+
+/* ========================================
+   フェードインアニメ
+======================================== */
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("show");
+  });
+});
+
+document.querySelectorAll(".fade-in").forEach(el => {
+  observer.observe(el);
+});
+
+
+
+/* ========================================
+   Instagram アプリ起動（スマホ対応）
+======================================== */
+
+const instaUsername = "sukekuro.onigiri";
+
+function openInstagramApp(e) {
+  e.preventDefault();
+
+  // アプリ起動
+  window.location.href = `instagram://user?username=${instaUsername}`;
+
+  // 失敗時Web
+  setTimeout(() => {
+    window.location.href = `https://www.instagram.com/${instaUsername}/`;
+  }, 800);
+}
+
+document.querySelectorAll("[data-instagram]").forEach(el => {
+  el.addEventListener("click", openInstagramApp);
+});
+
+document.getElementById("instaLink")
+ 
