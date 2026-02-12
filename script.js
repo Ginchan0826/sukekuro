@@ -155,3 +155,19 @@ async function fetchNews() {
 }
 
 fetchNews();
+// 画像拡大
+const modal = document.getElementById('imageModal');
+const modalImg = modal.querySelector('img');
+
+document.querySelectorAll('.image-frame img, .menu-image, .map-image').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+        modalImg.src = img.src;
+        modal.classList.add('show');
+    });
+});
+
+// モーダル閉じる
+modal.addEventListener('click', () => {
+    modal.classList.remove('show');
+});

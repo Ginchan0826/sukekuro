@@ -977,3 +977,93 @@ body {
         font-size: 0.8rem; /* 少し小さめにして収める */
     }
 }
+@media (max-width: 768px) {
+    /* ヘッダー全体 */
+    .header {
+        padding: 0.8rem 1.5rem;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    /* ロゴ */
+    .logo-img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+        white-space: nowrap; /* 改行禁止 */
+        font-weight: 600;
+        letter-spacing: 0.03em;
+    }
+
+    /* ナビリンク */
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+}
+@media (max-width: 768px) {
+    .section {
+        padding: 6rem 1.5rem; /* 上下余白を広めに */
+    }
+
+    .section-title {
+        font-size: 1.9rem;
+        margin-bottom: 3rem;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .about-content,
+    .access-content,
+    .menu-wrapper {
+        gap: 2rem;
+    }
+}
+@media (max-width: 768px) {
+    .image-frame,
+    .menu-image,
+    .map-wrapper {
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .image-frame:hover,
+    .menu-image:hover,
+    .map-wrapper:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    }
+}
+/* モーダル */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 20000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+.image-modal img {
+    max-width: 95%;
+    max-height: 95%;
+    border-radius: 15px;
+}
+
+.image-modal.show {
+    display: flex;
+}
