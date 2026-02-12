@@ -4,172 +4,225 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おにぎり食堂 すけくろ | 京都・丸太町</title>
+    <meta name="description" content="京都・丸太町のおにぎり専門店。待たずにすぐ食べられる、心を込めて握ったおにぎりと豚汁をお楽しみください。">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <!-- スクロール進捗バー -->
+    <div class="scroll-progress"></div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <nav class="nav">
             <div class="logo">
-                <img src="./logo.jpg" alt="すけくろロゴ">
-                <h1>すけくろ</h1>
+                <img src="./logo.jpg" alt="すけくろロゴ" class="logo-img">
+                <h1 class="logo-text">すけくろ</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="#about" class="lang-node" data-ja="お店について" data-en="About" data-zh="关于">お店について</a></li>
-                <li><a href="#menu" class="lang-node" data-ja="メニュー" data-en="Menu" data-zh="菜单">メニュー</a></li>
-                <li><a href="#instagram" class="lang-node" data-ja="Instagram" data-en="Instagram" data-zh="Instagram">Instagram</a></li>
-                <li><a href="#access" class="lang-node" data-ja="アクセス" data-en="Access" data-zh="交通">アクセス</a></li>
-                <li class="lang-switcher">
-                    <button class="lang-btn active" onclick="switchLang('ja')">JP</button>
-                    <button class="lang-btn" onclick="switchLang('en')">EN</button>
-                    <button class="lang-btn" onclick="switchLang('zh')">ZH</button>
-                </li>
+                <li><a href="#about">お店について</a></li>
+                <li><a href="#menu">メニュー</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+                <li><a href="#access">アクセス</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- ヒーローセクション -->
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h2 class="lang-node" data-ja="おにぎりと豚汁が待たずにすぐ食べられる!" data-en="Fresh Onigiri & Tonjiru,<br>Ready in Seconds!" data-zh="饭团和猪肉汤，<br>无需等待，即刻享用！">おにぎりと豚汁が<br>待たずにすぐ食べられる!</h2>
-            <p class="lang-node" data-ja="京都・丸太町のおにぎり専門店" data-en="Onigiri Shop in Marutamachi, Kyoto" data-zh="京都丸太町的饭团专门店">京都・丸太町のおにぎり専門店</p>
-        </div>
-    </section>
-
-    <section id="news" class="fade-in">
-     <h2 class="section-title">お知らせ</h2>
-      <ul id="news-list"></ul>
-    </section>
-
-
-    <section id="about">
-        <h2 class="section-title fade-in lang-node" data-ja="お店について" data-en="About" data-zh="关于我们">お店について</h2>
-        <div class="about-content fade-in">
-            <div class="about-text">
-                <h3 class="lang-node" data-ja="心を込めて握る、京都のおにぎり" data-en="Heartfelt Kyoto Onigiri" data-zh="用心捏制的京都饭团">心を込めて握る、京都のおにぎり</h3>
-                <p class="lang-node" data-ja="「すけくろ」は、京都・丸太町にあるおにぎり専門店です。" data-en="Sukekuro is an onigiri specialty shop in Marutamachi, Kyoto." data-zh="“Sukekuro”是位于京都丸太町的饭团专门店。">「すけくろ」は、京都・丸太町にあるおにぎり専門店です。</p>
-                <p class="lang-node" data-ja="厳選したお米と具材を使い、一つひとつ丁寧に握ったおにぎりを、できたての温かさでお届けします。" data-en="We use carefully selected rice and ingredients to deliver handmade warmth." data-zh="我们使用精选的大米和食材，为您提供每一个精心制作的饭团。">厳選したお米と具材を使い、一つひとつ丁寧に握ったおにぎりを、できたての温かさでお届けします。</p>
-                <p class="lang-node" data-ja="お忙しい方でも、待たずにすぐにお召し上がりいただけるよう、テイクアウトやイートインに対応しております。" data-en="Takeout and eat-in options are available for a quick meal." data-zh="支持外带和堂食，让忙碌的您也能快速享用。">お忙しい方でも、待たずにすぐにお召し上がりいただけるよう、テイクアウトやイートインに対応しております。</p>
-                <p class="lang-node" data-ja="豚汁とご一緒に、ほっと一息つける時間をお過ごしください。" data-en="Enjoy a relaxing moment with our special pork soup." data-zh="请配合猪肉汤，度过一段放松的时光。">豚汁とご一緒に、ほっと一息つける時間をお過ごしください。</p>
-            </div>
-            <div class="about-image">
-                <img src="./hero.png" alt="すけくろのおにぎり" class="clickable">
+            <h2 class="hero-title">
+                おにぎりと豚汁が<br>
+                <span class="hero-highlight">待たずにすぐ食べられる!</span>
+            </h2>
+            <p class="hero-subtitle">京都・丸太町のおにぎり専門店</p>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="scroll-arrow"></div>
             </div>
         </div>
     </section>
 
-    <section id="menu">
-        <h2 class="section-title fade-in lang-node" data-ja="メニュー" data-en="Menu" data-zh="菜单">メニュー</h2>
-        <div class="menu-image-wrapper fade-in">
-            <img src="./menu.png" alt="すけくろメニュー" class="clickable">
-        </div>
-        <div class="menu-note">
-            <p class="lang-node" data-ja="おにぎり170円（税込）から 豚汁とのセットもございます" data-en="Onigiri from 170 JPY. Sets available." data-zh="饭团170日元起。提供套装。">
-                おにぎり170円（税込）から<br>
-                豚汁とのセットもございます
-            </p>
+    <section class="news-section" id="news">
+  <h2 class="section-title">お知らせ</h2>
+
+  <div id="news-list" class="news-list">
+    <p>読み込み中...</p>
+  </div>
+</section>
+
+
+    <!-- Aboutセクション -->
+    <section id="about" class="section section-about">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration"></span>
+                お店について
+                <span class="title-decoration"></span>
+            </h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="about-heading">心を込めて握る、京都のおにぎり</h3>
+                    <div class="about-paragraph">
+                        <p>「すけくろ」は、京都・丸太町にあるおにぎり専門店です。</p>
+                        <p>厳選したお米と具材を使い、一つひとつ丁寧に握ったおにぎりを、できたての温かさでお届けします。</p>
+                        <p>お忙しい方でも、待たずにすぐにお召し上がりいただけるよう、テイクアウトやイートインに対応しております。</p>
+                        <p>豚汁とご一緒に、ほっと一息つける時間をお過ごしください。</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img src="./hero.png" alt="すけくろのおにぎり">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="instagram">
-        <h2 class="section-title fade-in">Instagram</h2>
-        <div class="instagram-container fade-in">
-            <div class="instagram-header">
-                <a href="https://www.instagram.com/sukekuro.onigiri" target="_blank" class="instagram-follow-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                    @sukekuro.onigiri をフォロー
-                </a>
+    <!-- メニューセクション -->
+    <section id="menu" class="section section-menu">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration"></span>
+                メニュー
+                <span class="title-decoration"></span>
+            </h2>
+            <div class="menu-wrapper">
+                <div class="menu-image-container">
+                    <img src="./menu.png" alt="すけくろメニュー" class="menu-image">
+                </div>
+                <div class="menu-note">
+                    <p class="menu-note-text">
+                        おにぎり170円（税込）から<br>
+                        豚汁とのセットもございます
+                    </p>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="instagram-feed">
-                <div class="instagram-post">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sukekuro.onigiri/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-                        <div style="padding:16px;">
-                            <a href="https://www.instagram.com/sukekuro.onigiri/" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-                                <div style="display: flex; flex-direction: row; align-items: center;">
-                                    <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
-                                    <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                        <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                                        <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+    <!-- インスタグラムセクション -->
+    <section id="instagram" class="section section-instagram">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration"></span>
+                Instagram
+                <span class="title-decoration"></span>
+            </h2>
+            <div class="instagram-container">
+                <div class="instagram-header">
+                    <a href="https://www.instagram.com/sukekuro.onigiri" target="_blank" rel="noopener noreferrer" class="instagram-follow-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        <span>@sukekuro.onigiri をフォロー</span>
+                    </a>
+                </div>
+
+                <div class="instagram-feed">
+                    <div class="instagram-post">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sukekuro.onigiri/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                            <div style="padding:16px;">
+                                <a href="https://www.instagram.com/sukekuro.onigiri/" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank" rel="noopener noreferrer">
+                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                        <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                                        <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                                            <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                                            <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div style="padding: 19% 0;"></div>
-                                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
-                                    <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                                                <g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g>
+                                    <div style="padding: 19% 0;"></div>
+                                    <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                        <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                                                    <g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g>
+                                                </g>
                                             </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div style="padding-top: 8px;">
-                                    <div style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Instagramで見る</div>
-                                </div>
-                            </a>
-                        </div>
-                    </blockquote>
+                                        </svg>
+                                    </div>
+                                    <div style="padding-top: 8px;">
+                                        <div style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Instagramで見る</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </blockquote>
+                    </div>
                 </div>
-            </div>
 
-            <div class="instagram-note">
-                <p class="lang-node" data-ja="最新の投稿やお店の様子はInstagramでチェック 日替わりメニューや限定商品の情報もいち早くお届けしています" data-en="Check Instagram for our latest posts. We also share info on daily menus and limited items!" data-zh="查看 Instagram 了解我们的最新动态。我们还会分享每日菜单和限量商品的信息！">
-                    最新の投稿やお店の様子は<a href="https://www.instagram.com/sukekuro.onigiri" target="_blank">Instagram</a>でチェック<br>
-                    日替わりメニューや限定商品の情報もいち早くお届けしています
-                </p>
+                <div class="instagram-note">
+                    <p>
+                        最新の投稿やお店の様子は<a href="https://www.instagram.com/sukekuro.onigiri" target="_blank" rel="noopener noreferrer">Instagram</a>でチェック<br>
+                        日替わりメニューや限定商品の情報もいち早くお届けしています
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="access">
-        <h2 class="section-title fade-in lang-node" data-ja="アクセス" data-en="Access" data-zh="交通信息">アクセス</h2>
-        <div class="access-content fade-in">
-            <div class="access-info">
-                <div class="info-item">
-                    <h3 class="lang-node" data-ja="住所" data-en="Address" data-zh="地址">住所</h3>
-                    <p class="lang-node" data-ja="〒602-8029 京都市上京区武衛陣町237-1階 地下鉄丸太町駅 2番出口より徒歩約3分" data-en="〒602-8029 237-1 Bueijincho, Kamigyo-ku, Kyoto. 3 min walk from Marutamachi Sta. Exit 2." data-zh="〒602-8029 京都市上京区武卫阵町237-1F。地铁丸太町站 2号出口步行约3分钟。">〒602-8029<br>
-                    京都市上京区武衛陣町237-1階<br>
-                    地下鉄丸太町駅 2番出口より徒歩約3分</p>
+    <!-- アクセスセクション -->
+    <section id="access" class="section section-access">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration"></span>
+                アクセス
+                <span class="title-decoration"></span>
+            </h2>
+            <div class="access-content">
+                <div class="access-info">
+                    <div class="info-item">
+                        <h3 class="info-title">住所</h3>
+                        <p class="info-text">
+                            〒602-8029<br>
+                            京都市上京区武衛陣町237-1階<br>
+                            地下鉄丸太町駅 2番出口より徒歩約3分
+                        </p>
+                    </div>
+                    <div class="info-item">
+                        <h3 class="info-title">営業時間</h3>
+                        <p class="info-text">
+                            8時から16時<br>
+                            又は売り切れ次第終了<br>
+                            平日営業・土日休
+                        </p>
+                    </div>
+                    <div class="info-item">
+                        <h3 class="info-title">電話番号</h3>
+                        <p class="info-text">TEL: 070-9345-4674</p>
+                    </div>
+                    <div class="info-item">
+                        <h3 class="info-title">お支払い方法</h3>
+                        <p class="info-text">
+                            テイクアウト・イートイン<br>
+                            (先払い制)
+                        </p>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <h3 class="lang-node" data-ja="営業時間" data-en="Business Hours" data-zh="营业时间">営業時間</h3>
-                    <p class="lang-node" data-ja="8時から16時 又は売り切れ次第終了 平日営業・土日休" data-en="8:00 - 16:00 (or until sold out) Open weekdays, closed Sat/Sun" data-zh="8点至16点（售完即止） 工作日营业，周六周日休息">8時から16時<br>
-                    又は売り切れ次第終了<br>
-                    平日営業・土日休</p>
+                <div class="map-container">
+                    <div class="map-wrapper">
+                        <img src="./map.png" alt="すけくろ周辺地図" class="map-image">
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=京都市上京区武衛陣町237-1階" target="_blank" rel="noopener noreferrer" class="google-map-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span>Google Mapで開く</span>
+                    </a>
                 </div>
-                <div class="info-item">
-                    <h3 class="lang-node" data-ja="電話番号" data-en="Phone" data-zh="电话号码">電話番号</h3>
-                    <p>TEL: 070-9345-4674</p>
-                </div>
-                <div class="info-item">
-                    <h3 class="lang-node" data-ja="お支払い方法" data-en="Payment" data-zh="支付方式">お支払い方法</h3>
-                    <p class="lang-node" data-ja="テイクアウト・イートイン (先払い制)" data-en="Takeout & Eat-in (Prepayment)" data-zh="外带/堂食（先付款制）">テイクアウト・イートイン<br>
-                    (先払い制)</p>
-                </div>
-            </div>
-            <div class="map-container">
-                <div class="map-wrapper">
-                    <img src="./map.png" alt="すけくろ周辺地図" class="clickable">
-                </div>
-                <a href="https://www.google.com/maps/search/?api=1&query=京都市上京区武衛陣町237-1階" target="_blank" class="google-map-btn lang-node" data-ja="Google Mapで開く" data-en="Open Google Maps" data-zh="打开 Google 地图">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    Google Mapで開く
-                </a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 おにぎり食堂 すけくろ. All Rights Reserved.</p>
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2026 おにぎり食堂 すけくろ. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <div id="image-modal" class="img-modal" onclick="closeModal()">
-        <img id="modal-img" src="" alt="">
-    </div>
-
-    <script async src="//www.instagram.com/embed.js"></script>
+   
     <script src="script.js"></script>
 </body>
 </html>
